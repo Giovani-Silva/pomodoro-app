@@ -1,10 +1,11 @@
 import { Scroll, Timer } from "phosphor-react";
+import { memo } from "react";
 import { NavLink } from "react-router-dom";
 
 import logoIgnite from "../../assets/logo.svg";
 import { HeaderContainer } from "./styles";
 
-export function Header() {
+function HeaderComponent() {
   return (
     <HeaderContainer>
       <span>
@@ -21,3 +22,6 @@ export function Header() {
     </HeaderContainer>
   );
 }
+
+const Header = memo(HeaderComponent);
+export { Header };
