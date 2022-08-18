@@ -1,6 +1,14 @@
+import { useState } from "react";
 import { CountdownContainer, Separator } from "./styles";
 
-export function Countdown() {
+interface CountdownProps {
+  activeCycle: any
+  setCycles: any
+  activeCycleId: any
+}
+
+export function Countdown({ activeCycle, setCycles, activeCycleId }: CountdownProps) {
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0);
   return (
     <CountdownContainer>
       <span>{minutes[0]}</span>

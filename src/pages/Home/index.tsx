@@ -6,14 +6,9 @@ import { useForm } from "react-hook-form";
 import * as zod from "zod";
 
 import {
-  CountdownContainer,
-  FormContainer,
   HomeContainer,
-  MinutesAmountInput,
-  Separator,
   StartCountdownButton,
   StopCountdownButton,
-  TaskInput,
 } from "./styles";
 
 import { NewCycleForm } from "./components/NewCycleForm";
