@@ -59,6 +59,10 @@ export function Home() {
 
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 
+  function setSecondsPassed(seconds: number) {
+    setAmountSecondsPassed(seconds)
+  }
+
   function markCurrentCycleAsFinished() {
     setCycles((state) =>
       state.map((cycle) => {
