@@ -24,16 +24,6 @@ export function Countdown() {
 
         if (secondsDifference >= totalSeconds) {
           markCurrentCycleAsFinished();
-          //  setCycles((state) =>
-          //    state.map((cycle) => {
-          //      if (cycle.id === activeCycleId) {
-          //        return { ...cycle, finishedDate: new Date() };
-          //      } else {
-          //        return cycle;
-          //      }
-          //    })
-          //  );
-
           setSecondsPassed(totalSeconds);
           clearInterval(interval);
         } else {
