@@ -1,83 +1,57 @@
+import { SmileyXEyes } from "phosphor-react";
 import { useContext } from "react";
 import { CyclesContext } from "../../context/CyclesContext";
-import { HistoryContainer, HistoryList, Status } from "./styles";
+import { HistoryContainer, HistoryList, Message, Status } from "./styles";
 
 export function History() {
-    const { cycles } = useContext(CyclesContext)
+  const { cycles } = useContext(CyclesContext);
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
-      <pre>{JSON.stringify(cycles, null, 2)}</pre>
-      <HistoryList>
-        <table>
-          <thead>
-            <tr>
-              <th>Tarefa</th>
-              <th>Duração</th>
-              <th>Duração</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <Status statusColor="green">Concluído</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <Status statusColor="green">Concluído</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <Status statusColor="green">Concluído</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <Status statusColor="green">Concluído</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <Status statusColor="green">Concluído</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <Status statusColor="yellow">Em andamento</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <Status statusColor="red">Interrompido</Status>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </HistoryList>
+      {!cycles.length && (
+        <Message>
+          <SmileyXEyes size={32} />
+          <div>Não há nenhum histórico de ciclos ainda.</div>
+        </Message>
+      )}
+      {!!cycles.length && (
+        <HistoryList>
+          <table>
+            <thead>
+              <tr>
+                <th>Tarefa</th>
+                <th>Duração</th>
+                <th>Duração</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cycles.map((cycle) => {
+                return (
+                  <tr key={cycle.id}>
+                    <td>{cycle.task}</td>
+                    <td>{cycle.minutesAmount} minutos</td>
+                    <td>{cycle.startDate.toISOString()}</td>
+                    <td>
+                      {cycle.finishedDate && (
+                        <Status statusColor="green">Concluído</Status>
+                      )}
+
+                      {cycle.interruptedDate && (
+                        <Status statusColor="red">Interrompido</Status>
+                      )}
+
+                      {!cycle.finishedDate && !cycle.interruptedDate && (
+                        <Status statusColor="yellow">Em andamento</Status>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </HistoryList>
+      )}
     </HistoryContainer>
   );
 }
