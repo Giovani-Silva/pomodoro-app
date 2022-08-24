@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { SmileyXEyes } from "phosphor-react";
 import { useContext } from "react";
 import { CyclesContext } from "../../context/CyclesContext";
@@ -31,7 +33,12 @@ export function History() {
                   <tr key={cycle.id}>
                     <td>{cycle.task}</td>
                     <td>{cycle.minutesAmount} minutos</td>
-                    <td>{cycle.startDate.toISOString()}</td>
+                    <td>
+                      {formatDistanceToNow(cycle.startDate, {
+                        addSuffix: true,
+                        locale: ptBR,
+                      })}
+                    </td>
                     <td>
                       {cycle.finishedDate && (
                         <Status statusColor="green">Concluído</Status>
