@@ -1,12 +1,12 @@
-import { formatDistanceToNow } from "date-fns";
-import { ptBR } from "date-fns/locale";
-import { SmileyXEyes } from "phosphor-react";
-import { useContext } from "react";
-import { CyclesContext } from "../../context/CyclesContext";
-import { HistoryContainer, HistoryList, Message, Status } from "./styles";
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import { SmileyXEyes } from 'phosphor-react'
+import { useContext } from 'react'
+import { CyclesContext } from '../../context/CyclesContext'
+import { HistoryContainer, HistoryList, Message, Status } from './styles'
 
 export function History() {
-  const { cycles } = useContext(CyclesContext);
+  const { cycles } = useContext(CyclesContext)
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
@@ -53,12 +53,12 @@ export function History() {
                       )}
                     </td>
                   </tr>
-                );
+                )
               })}
             </tbody>
           </table>
         </HistoryList>
       )}
     </HistoryContainer>
-  );
+  )
 }

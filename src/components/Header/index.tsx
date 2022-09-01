@@ -1,9 +1,9 @@
-import { Scroll, Timer } from "phosphor-react";
-import { memo } from "react";
-import { NavLink } from "react-router-dom";
+import { Scroll, Timer } from 'phosphor-react'
+import { memo } from 'react'
+import { NavLink } from 'react-router-dom'
 
-import logoIgnite from "../../assets/logo.svg";
-import { HeaderContainer } from "./styles";
+import logoIgnite from '../../assets/logo.svg'
+import { HeaderContainer } from './styles'
 
 function HeaderComponent() {
   return (
@@ -20,8 +20,8 @@ function HeaderComponent() {
         </NavLink>
       </nav>
     </HeaderContainer>
-  );
+  )
 }
 
-const Header = memo(HeaderComponent);
-export { Header };
+const Header = memo(HeaderComponent)
+export { Header }

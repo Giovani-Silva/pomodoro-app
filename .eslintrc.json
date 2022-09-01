@@ -3,7 +3,4 @@
   "rules": {
     "no-unused-vars": "off"
   }
-  "rules": {
-    "semi": ["error", "false"]
-  }
 }
