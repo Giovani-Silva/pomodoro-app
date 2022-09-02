@@ -1,6 +1,19 @@
 {
+  "plugins": ["import"],
   "extends": "@rocketseat/eslint-config/react",
   "rules": {
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "import/no-unresolved": "error"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true, 
+        "project": "./tsconfig.json"
+      }
+    }
   }
 }
